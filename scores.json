@@ -1,0 +1,224 @@
+{
+  "Plate Pouring": {
+    "Group 1": {
+      "Constance": {
+        "plate1_g": "50",
+        "plate2_g": "46",
+        "plate3_g": "45",
+        "place": 2,
+        "team": "\ud83c\udf4e Red"
+      },
+      "Shayan": {
+        "plate1_g": "48",
+        "plate2_g": "48",
+        "plate3_g": "48",
+        "place": 1,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+      },
+      "Paula": {
+        "plate1_g": "38",
+        "plate2_g": "56",
+        "plate3_g": "49",
+        "place": 4,
+        "team": "\ud83c\udf3f Green"
+      },
+      "Daniel H": {
+        "plate1_g": "51",
+        "plate2_g": "45",
+        "plate3_g": "49",
+        "place": 3,
+        "team": "\ud83d\udc8e Blue"
+      }
+    }
+  },
+  "Standard Curve": {
+    "Group 4": {
+      "Melanie": {
+        "r_squared": "0.98",
+        "place": 1,
+        "team": "\ud83c\udf4e Red"
+      },
+      "Vilem": {
+        "r_squared": "0.76",
+        "place": 3,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+      },
+      "Adam": {
+        "r_squared": "0.37",
+        "place": 4,
+        "team": "\ud83c\udf3f Green"
+      },
+      "Michael R": {
+        "r_squared": "0.96",
+        "place": 2,
+        "team": "\ud83d\udc8e Blue"
+      }
+    },
+    "Group 2": {
+      "Ruben": {
+        "r_squared": "",
+        "place": 1,
+        "team": "\ud83c\udf4e Red"
+      },
+      "Wallis": {
+        "r_squared": "",
+        "place": 2,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+      },
+      "Lena": {
+        "r_squared": "",
+        "place": 3,
+        "team": "\ud83c\udf3f Green"
+      },
+      "Sara": {
+        "r_squared": "",
+        "place": 4,
+        "team": "\ud83d\udc8e Blue"
+      }
+    }
+  },
+  "Parafilm Resistance": {
+    "Group 6": {
+      "Toby": {
+        "length_cm": "11",
+        "place": 4,
+        "team": "\ud83c\udf4e Red"
+      },
+      "Paul": {
+        "length_cm": "34",
+        "place": 3,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+      },
+      "Emanuele": {
+        "length_cm": "40",
+        "place": 2,
+        "team": "\ud83c\udf3f Green"
+      },
+      "Jessica": {
+        "length_cm": "56",
+        "place": 1,
+        "team": "\ud83d\udc8e Blue"
+      }
+    },
+    "Group 1": {
+      "Constance": {
+        "length_cm": "11",
+        "place": 3,
+        "team": "\ud83c\udf4e Red"
+      },
+      "Shayan": {
+        "length_cm": "34",
+        "place": 1,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+      },
+      "Paula": {
+        "length_cm": "25",
+        "place": 2,
+        "team": "\ud83c\udf3f Green"
+      },
+      "Daniel H": {
+        "length_cm": "9",
+        "place": 4,
+        "team": "\ud83d\udc8e Blue"
+      }
+    }
+  },
+  "Autoclave Load": {
+    "Group 6": {
+      "Toby": {
+        "time_minsec": "1:18",
+        "quality": 3,
+        "place": 1,
+        "team": "\ud83c\udf4e Red"
+      },
+      "Paul": {
+        "time_minsec": "1:04",
+        "quality": 2,
+        "place": 2,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+      },
+      "Emanuele": {
+        "time_minsec": "2:56",
+        "quality": 2,
+        "place": 4,
+        "team": "\ud83c\udf3f Green"
+      },
+      "Jessica": {
+        "time_minsec": "2:01",
+        "quality": 3,
+        "place": 3,
+        "team": "\ud83d\udc8e Blue"
+      }
+    }
+  },
+  "Precision Balance": {
+    "Group 2": {
+      "Ruben": {
+        "weight_g": "1.450",
+        "volume_mL": "17",
+        "place": 1,
+        "team": "\ud83c\udf4e Red"
+      },
+      "Wallis": {
+        "weight_g": "3.5789",
+        "volume_mL": "21",
+        "place": 4,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+      },
+      "Lena": {
+        "weight_g": "0.4578",
+        "volume_mL": "38",
+        "place": 3,
+        "team": "\ud83c\udf3f Green"
+      },
+      "Sara": {
+        "weight_g": "1.3352",
+        "volume_mL": "45",
+        "place": 2,
+        "team": "\ud83d\udc8e Blue"
+      }
+    }
+  },
+  "Inventory Hunt": {
+    "Group 1": {
+      "Constance": {
+        "semi_items_correct": "3",
+        "semi_total_scanned": "5",
+        "semi_time_minsec": "2:12",
+        "place": 1,
+        "team": "\ud83c\udf4e Red",
+        "is_finalist": true,
+        "final_items_correct": "3",
+        "final_total_scanned": "4",
+        "final_time_minsec": "2:30"
+      },
+      "Shayan": {
+        "semi_items_correct": "2",
+        "semi_total_scanned": "3",
+        "semi_time_minsec": "2:30",
+        "place": 4,
+        "team": "\ud83d\udc08\u200d\u2b1b Grey",
+        "is_finalist": false
+      },
+      "Paula": {
+        "semi_items_correct": "3",
+        "semi_total_scanned": "3",
+        "semi_time_minsec": "2:30",
+        "place": 3,
+        "team": "\ud83c\udf3f Green",
+        "is_finalist": false
+      },
+      "Daniel H": {
+        "semi_items_correct": "3",
+        "semi_total_scanned": "3",
+        "semi_time_minsec": "1:45",
+        "place": 2,
+        "team": "\ud83d\udc8e Blue",
+        "is_finalist": true,
+        "final_items_correct": "2",
+        "final_total_scanned": "3",
+        "final_time_minsec": "2:30"
+      }
+    }
+  }
+}
