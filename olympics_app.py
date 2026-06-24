@@ -7,37 +7,37 @@ import streamlit as st
 
 # ─── Configuration ────────────────────────────────────────────────────────────
 
-TEAMS = [
-    "🔥 Orange",
-    "🍎 Red",
-    "🌿 Green",
-    "💎 Blue",
+COUNTRIES = [
+    "🔥 Tulip Tips",
+    "🍎 mCherry",
+    "🌿 GFP",
+    "💎 MiSaYa",
 ]
 
 GROUPS: dict[str, list[dict]] = {
     "Group 1": [
-        {"name": "Constance", "team": "🍎 Red"},
-        {"name": "Shayan", "team": "🔥 Orange"},
-        {"name": "Paula", "team": "🌿 Green"},
-        {"name": "Dan", "team": "💎 Blue"},
+        {"name": "Constance", "team": "🍎 mCherry"},
+        {"name": "Shayan", "team": "🔥 Tulip Tips"},
+        {"name": "Paula", "team": "🌿 GFP"},
+        {"name": "Dan", "team": "💎 MiSaYa"},
     ],
     "Group 2": [
-        {"name": "Emanuele", "team": "🍎 Red"},
-        {"name": "Wallis", "team": "🔥 Orange"},
-        {"name": "Lena", "team": "🌿 Green"},
-        {"name": "Sara", "team": "💎 Blue"},
+        {"name": "Emanuele", "team": "🍎 mCherry"},
+        {"name": "Wallis", "team": "🔥 Tulip Tips"},
+        {"name": "Lena", "team": "🌿 GFP"},
+        {"name": "Sara", "team": "💎 MiSaYa"},
     ],
     "Group 3": [
-        {"name": "Eli", "team": "🍎 Red"},
-        {"name": "Paul", "team": "🔥 Orange"},
-        {"name": "Jessica", "team": "🌿 Green"},
-        {"name": "Iana", "team": "💎 Blue"},
+        {"name": "Eli", "team": "🍎 mCherry"},
+        {"name": "Paul", "team": "🔥 Tulip Tips"},
+        {"name": "Jessica", "team": "🌿 GFP"},
+        {"name": "Iana", "team": "💎 MiSaYa"},
     ],
     "Group 4": [
-        {"name": "Lucas", "team": "🍎 Red"},
-        {"name": "Nahin", "team": "🔥 Orange"},
-        {"name": "Roxane", "team": "🌿 Green"},
-        {"name": "Michael", "team": "💎 Blue"},
+        {"name": "Lucas", "team": "🍎 mCherry"},
+        {"name": "Nahin", "team": "🔥 Tulip Tips"},
+        {"name": "Roxane", "team": "🌿 GFP"},
+        {"name": "Michael", "team": "💎 MiSaYa"},
     ],
 }
 
@@ -328,8 +328,8 @@ def save_scores(scores: dict) -> None:
 
 
 def get_standings(scores: dict):
-    totals = {t: 0 for t in TEAMS}
-    wins = {t: 0 for t in TEAMS}
+    totals = {t: 0 for t in COUNTRIES}
+    wins = {t: 0 for t in COUNTRIES}
     for groups in scores.values():
         if not isinstance(groups, dict):
             continue
@@ -345,12 +345,12 @@ def get_standings(scores: dict):
                     totals[team] += PLACE_POINTS.get(place, 0)
                     if place == 1:
                         wins[team] += 1
-    ranked = sorted(TEAMS, key=lambda t: (-totals[t], -wins[t]))
+    ranked = sorted(COUNTRIES, key=lambda t: (-totals[t], -wins[t]))
     return ranked, totals, wins
 
 
 def _event_team_points(event: str, scores: dict) -> dict[str, int]:
-    pts = {t: 0 for t in TEAMS}
+    pts = {t: 0 for t in COUNTRIES}
     for persons in scores.get(event, {}).values():
         if not isinstance(persons, dict):
             continue
@@ -494,14 +494,14 @@ def page_leaderboard(scores: dict) -> None:
     )
 
     # ── Event Results: per-event team point totals ─────────────────────────────
-    team_headers = "".join(f"<th>{t}</th>" for t in TEAMS)
+    team_headers = "".join(f"<th>{t}</th>" for t in COUNTRIES)
     event_rows = ""
     for event in EVENTS:
         pts = _event_team_points(event, scores)
         n_groups = len(scores.get(event, {}))
         event_rows += "<tr><td>{}</td>{}<td>{}/{}</td></tr>".format(
             _event_html(event, 20),
-            "".join(f"<td>{pts[t]}</td>" for t in TEAMS),
+            "".join(f"<td>{pts[t]}</td>" for t in COUNTRIES),
             n_groups,
             len(GROUPS),
         )
