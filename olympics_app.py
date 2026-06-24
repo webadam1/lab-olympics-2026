@@ -499,10 +499,11 @@ def page_leaderboard(scores: dict) -> None:
     for event in EVENTS:
         pts = _event_team_points(event, scores)
         n_groups = len(scores.get(event, {}))
-        event_rows += "<tr><td>{}</td>{}<td>{}/6</td></tr>".format(
+        event_rows += "<tr><td>{}</td>{}<td>{}/{}</td></tr>".format(
             _event_html(event, 20),
             "".join(f"<td>{pts[t]}</td>" for t in TEAMS),
             n_groups,
+            len(GROUPS),
         )
 
     # ── Best Results: best individual per event across all groups ──────────────
