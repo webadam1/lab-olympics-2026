@@ -13,7 +13,7 @@
         "plate2_g": "48",
         "plate3_g": "48",
         "place": 1,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+        "team": "\ud83d\udd25 Orange"
       },
       "Paula": {
         "plate1_g": "38",
@@ -41,7 +41,7 @@
       "Vilem": {
         "r_squared": "0.76",
         "place": 3,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+        "team": "\ud83d\udd25 Orange"
       },
       "Adam": {
         "r_squared": "0.37",
@@ -63,7 +63,7 @@
       "Wallis": {
         "r_squared": "",
         "place": 2,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+        "team": "\ud83d\udd25 Orange"
       },
       "Lena": {
         "r_squared": "",
@@ -87,7 +87,7 @@
       "Paul": {
         "length_cm": "34",
         "place": 3,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+        "team": "\ud83d\udd25 Orange"
       },
       "Emanuele": {
         "length_cm": "40",
@@ -109,7 +109,7 @@
       "Shayan": {
         "length_cm": "34",
         "place": 1,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+        "team": "\ud83d\udd25 Orange"
       },
       "Paula": {
         "length_cm": "25",
@@ -135,7 +135,7 @@
         "time_minsec": "1:04",
         "quality": 2,
         "place": 2,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+        "team": "\ud83d\udd25 Orange"
       },
       "Emanuele": {
         "time_minsec": "2:56",
@@ -163,7 +163,7 @@
         "weight_g": "3.5789",
         "volume_mL": "21",
         "place": 4,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey"
+        "team": "\ud83d\udd25 Orange"
       },
       "Lena": {
         "weight_g": "0.4578",
@@ -197,7 +197,7 @@
         "semi_total_scanned": "3",
         "semi_time_minsec": "2:30",
         "place": 4,
-        "team": "\ud83d\udc08\u200d\u2b1b Grey",
+        "team": "\ud83d\udd25 Orange",
         "is_finalist": false
       },
       "Paula": {

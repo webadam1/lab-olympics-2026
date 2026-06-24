@@ -8,7 +8,7 @@ import streamlit as st
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 TEAMS = [
-    "🐈‍⬛ Grey",
+    "🔥 Orange",
     "🍎 Red",
     "🌿 Green",
     "💎 Blue",
@@ -17,37 +17,37 @@ TEAMS = [
 GROUPS: dict[str, list[dict]] = {
     "Group 1": [
         {"name": "Constance", "team": "🍎 Red"},
-        {"name": "Shayan", "team": "🐈‍⬛ Grey"},
+        {"name": "Shayan", "team": "🔥 Orange"},
         {"name": "Paula", "team": "🌿 Green"},
         {"name": "Daniel H", "team": "💎 Blue"},
     ],
     "Group 2": [
         {"name": "Ruben", "team": "🍎 Red"},
-        {"name": "Wallis", "team": "🐈‍⬛ Grey"},
+        {"name": "Wallis", "team": "🔥 Orange"},
         {"name": "Lena", "team": "🌿 Green"},
         {"name": "Sara", "team": "💎 Blue"},
     ],
     "Group 3": [
         {"name": "Katy", "team": "🍎 Red"},
-        {"name": "Claire", "team": "🐈‍⬛ Grey"},
-        {"name": "Devesh", "team": "🌿 Green"},
+        {"name": "Claire", "team": "🔥 Orange"},
+        {"name": "Stef", "team": "🌿 Green"},
         {"name": "Iana", "team": "💎 Blue"},
     ],
     "Group 4": [
         {"name": "Melanie", "team": "🍎 Red"},
-        {"name": "Vilem", "team": "🐈‍⬛ Grey"},
+        {"name": "Vilem", "team": "🔥 Orange"},
         {"name": "Adam", "team": "🌿 Green"},
         {"name": "Michael R", "team": "💎 Blue"},
     ],
     "Group 5": [
         {"name": "Robbert", "team": "🍎 Red"},
-        {"name": "Lucas", "team": "🐈‍⬛ Grey"},
+        {"name": "Lucas", "team": "🔥 Orange"},
         {"name": "Roxane", "team": "🌿 Green"},
         {"name": "Nahin", "team": "💎 Blue"},
     ],
     "Group 6": [
         {"name": "Toby", "team": "🍎 Red"},
-        {"name": "Paul", "team": "🐈‍⬛ Grey"},
+        {"name": "Paul", "team": "🔥 Orange"},
         {"name": "Emanuele", "team": "🌿 Green"},
         {"name": "Jessica", "team": "💎 Blue"},
     ],
@@ -319,11 +319,10 @@ def load_scores() -> dict:
         # Discard old-format Inventory Hunt groups (no is_finalist key → pre-bracket format)
         if event == "Inventory Hunt":
             ev_data = {
-                g: gd for g, gd in ev_data.items()
-                if isinstance(gd, dict) and any(
-                    isinstance(d, dict) and "is_finalist" in d
-                    for d in gd.values()
-                )
+                g: gd
+                for g, gd in ev_data.items()
+                if isinstance(gd, dict)
+                and any(isinstance(d, dict) and "is_finalist" in d for d in gd.values())
             }
             if not ev_data:
                 continue
@@ -673,9 +672,9 @@ def page_leaderboard(scores: dict) -> None:
 def _page_referee_inventory(
     scores: dict, event: str, group: str, participants: list, existing_group: dict
 ) -> None:
-    inv_fields    = EVENT_RESULT_FIELDS["Inventory Hunt"]
-    names         = [p["name"] for p in participants]
-    p_by_name     = {p["name"]: p for p in participants}
+    inv_fields = EVENT_RESULT_FIELDS["Inventory Hunt"]
+    names = [p["name"] for p in participants]
+    p_by_name = {p["name"]: p for p in participants}
     finalists_key = f"inv_{group}_finalists"
 
     st.subheader(f"{event} — {group}")
@@ -683,12 +682,20 @@ def _page_referee_inventory(
     # ── Already saved: show summary + clear ───────────────────────────────────
     if existing_group:
         saved = sorted(
-            [(n, d) for n, d in existing_group.items() if isinstance(d, dict) and "place" in d],
+            [
+                (n, d)
+                for n, d in existing_group.items()
+                if isinstance(d, dict) and "place" in d
+            ],
             key=lambda x: x[1]["place"],
         )
         for name, data in saved:
-            place  = data.get("place", "?")
-            medal  = RANK_MEDALS[place - 1] if isinstance(place, int) and 1 <= place <= 4 else "?"
+            place = data.get("place", "?")
+            medal = (
+                RANK_MEDALS[place - 1]
+                if isinstance(place, int) and 1 <= place <= 4
+                else "?"
+            )
             if data.get("is_finalist"):
                 result = f"Final — {data.get('final_items_correct', '')}/{data.get('final_total_scanned', '')} items, {data.get('final_time_minsec', '')}"
             else:
@@ -705,7 +712,7 @@ def _page_referee_inventory(
             st.rerun()
         return
 
-    col_w          = [2] + [1] * len(inv_fields)
+    col_w = [2] + [1] * len(inv_fields)
     in_final_stage = finalists_key in st.session_state
 
     # ── Semifinal inputs ───────────────────────────────────────────────────────
@@ -722,14 +729,20 @@ def _page_referee_inventory(
                 wkey = f"inv_semi_{group}_{p['name']}_{f['key']}"
                 if f.get("type") == "int":
                     row[1 + j].number_input(
-                        f["label"], label_visibility="collapsed",
-                        min_value=f.get("min", 0), max_value=f.get("max", 999),
-                        key=wkey, disabled=in_final_stage,
+                        f["label"],
+                        label_visibility="collapsed",
+                        min_value=f.get("min", 0),
+                        max_value=f.get("max", 999),
+                        key=wkey,
+                        disabled=in_final_stage,
                     )
                 else:
                     row[1 + j].text_input(
-                        f["label"], label_visibility="collapsed",
-                        placeholder=f["label"], key=wkey, disabled=in_final_stage,
+                        f["label"],
+                        label_visibility="collapsed",
+                        placeholder=f["label"],
+                        key=wkey,
+                        disabled=in_final_stage,
                     )
 
     st.divider()
@@ -737,20 +750,35 @@ def _page_referee_inventory(
     if not in_final_stage:
         # ── Submit semis button ────────────────────────────────────────────────
         semi_time_filled = all(
-            str(st.session_state.get(f"inv_semi_{group}_{p['name']}_{f['key']}", "")).strip() != ""
-            for p in participants for f in inv_fields if f.get("type") != "int"
+            str(
+                st.session_state.get(f"inv_semi_{group}_{p['name']}_{f['key']}", "")
+            ).strip()
+            != ""
+            for p in participants
+            for f in inv_fields
+            if f.get("type") != "int"
         )
         if st.button("Submit semis →", type="primary", disabled=not semi_time_filled):
             semi_raw = {
                 p["name"]: {
-                    f["key"]: str(st.session_state.get(f"inv_semi_{group}_{p['name']}_{f['key']}", ""))
+                    f["key"]: str(
+                        st.session_state.get(
+                            f"inv_semi_{group}_{p['name']}_{f['key']}", ""
+                        )
+                    )
                     for f in inv_fields
                 }
                 for p in participants
             }
             semi_scores = _score_inventory(semi_raw)
-            winner1 = max([participants[0]["name"], participants[1]["name"]], key=lambda n: semi_scores.get(n, 0))
-            winner2 = max([participants[2]["name"], participants[3]["name"]], key=lambda n: semi_scores.get(n, 0))
+            winner1 = max(
+                [participants[0]["name"], participants[1]["name"]],
+                key=lambda n: semi_scores.get(n, 0),
+            )
+            winner2 = max(
+                [participants[2]["name"], participants[3]["name"]],
+                key=lambda n: semi_scores.get(n, 0),
+            )
             st.session_state[finalists_key] = [winner1, winner2]
             st.rerun()
         return
@@ -765,65 +793,109 @@ def _page_referee_inventory(
         hdr[1 + j].markdown(f"**{f['label']}**")
 
     for fn in finalists:
-        p   = p_by_name[fn]
+        p = p_by_name[fn]
         row = st.columns(col_w)
         row[0].markdown(f"{fn} {p['team']}")
         for j, f in enumerate(inv_fields):
             wkey = f"inv_final_{group}_{fn}_{f['key']}"
             if f.get("type") == "int":
                 row[1 + j].number_input(
-                    f["label"], label_visibility="collapsed",
-                    min_value=f.get("min", 0), max_value=f.get("max", 999),
+                    f["label"],
+                    label_visibility="collapsed",
+                    min_value=f.get("min", 0),
+                    max_value=f.get("max", 999),
                     key=wkey,
                 )
             else:
                 row[1 + j].text_input(
-                    f["label"], label_visibility="collapsed",
-                    placeholder=f["label"], key=wkey,
+                    f["label"],
+                    label_visibility="collapsed",
+                    placeholder=f["label"],
+                    key=wkey,
                 )
 
     st.divider()
 
     final_time_filled = all(
-        str(st.session_state.get(f"inv_final_{group}_{fn}_{f['key']}", "")).strip() != ""
-        for fn in finalists for f in inv_fields if f.get("type") != "int"
+        str(st.session_state.get(f"inv_final_{group}_{fn}_{f['key']}", "")).strip()
+        != ""
+        for fn in finalists
+        for f in inv_fields
+        if f.get("type") != "int"
     )
 
     sc1, sc2 = st.columns(2)
     with sc1:
-        if st.button("Save final results", type="primary", use_container_width=True, disabled=not final_time_filled):
+        if st.button(
+            "Save final results",
+            type="primary",
+            use_container_width=True,
+            disabled=not final_time_filled,
+        ):
             semi_raw = {
-                p["name"]: {f["key"]: str(st.session_state.get(f"inv_semi_{group}_{p['name']}_{f['key']}", "")) for f in inv_fields}
+                p["name"]: {
+                    f["key"]: str(
+                        st.session_state.get(
+                            f"inv_semi_{group}_{p['name']}_{f['key']}", ""
+                        )
+                    )
+                    for f in inv_fields
+                }
                 for p in participants
             }
             final_raw = {
-                fn: {f["key"]: str(st.session_state.get(f"inv_final_{group}_{fn}_{f['key']}", "")) for f in inv_fields}
+                fn: {
+                    f["key"]: str(
+                        st.session_state.get(f"inv_final_{group}_{fn}_{f['key']}", "")
+                    )
+                    for f in inv_fields
+                }
                 for fn in finalists
             }
-            semi_scores  = _score_inventory(semi_raw)
+            semi_scores = _score_inventory(semi_raw)
             final_scores = _score_inventory(final_raw)
-            non_finalists        = [n for n in names if n not in finalists]
-            non_finalists_ranked = sorted(non_finalists, key=lambda n: semi_scores.get(n, 0), reverse=True)
-            finalists_ranked     = sorted(finalists,     key=lambda n: final_scores.get(n, 0), reverse=True)
+            non_finalists = [n for n in names if n not in finalists]
+            non_finalists_ranked = sorted(
+                non_finalists, key=lambda n: semi_scores.get(n, 0), reverse=True
+            )
+            finalists_ranked = sorted(
+                finalists, key=lambda n: final_scores.get(n, 0), reverse=True
+            )
             places = {
-                finalists_ranked[0]: 1, finalists_ranked[1]: 2,
-                non_finalists_ranked[0]: 3, non_finalists_ranked[1]: 4,
+                finalists_ranked[0]: 1,
+                finalists_ranked[1]: 2,
+                non_finalists_ranked[0]: 3,
+                non_finalists_ranked[1]: 4,
             }
             group_data = {}
             for p in participants:
-                n    = p["name"]
+                n = p["name"]
                 is_f = n in finalists
-                entry = {**{f"semi_{f['key']}": semi_raw[n][f["key"]] for f in inv_fields}, "place": places.get(n), "team": p["team"], "is_finalist": is_f}
+                entry = {
+                    **{f"semi_{f['key']}": semi_raw[n][f["key"]] for f in inv_fields},
+                    "place": places.get(n),
+                    "team": p["team"],
+                    "is_finalist": is_f,
+                }
                 if is_f:
-                    entry.update({f"final_{f['key']}": final_raw[n][f["key"]] for f in inv_fields})
+                    entry.update(
+                        {
+                            f"final_{f['key']}": final_raw[n][f["key"]]
+                            for f in inv_fields
+                        }
+                    )
                 group_data[n] = entry
             scores.setdefault(event, {})[group] = group_data
             save_scores(scores)
             st.session_state.pop(finalists_key, None)
             for p in participants:
                 for f in inv_fields:
-                    st.session_state.pop(f"inv_semi_{group}_{p['name']}_{f['key']}", None)
-                    st.session_state.pop(f"inv_final_{group}_{p['name']}_{f['key']}", None)
+                    st.session_state.pop(
+                        f"inv_semi_{group}_{p['name']}_{f['key']}", None
+                    )
+                    st.session_state.pop(
+                        f"inv_final_{group}_{p['name']}_{f['key']}", None
+                    )
             st.success(f"Saved {event} — {group}!")
             st.rerun()
 
